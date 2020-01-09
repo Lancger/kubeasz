@@ -114,8 +114,12 @@ ansible-playbook 04.kube-master.yml
 ansible-playbook 05.kube-node.yml
 ansible-playbook 06.network.yml
 ansible-playbook 07.cluster-addon.yml
+
 # 一步安装
 #ansible-playbook 90.setup.yml
+
+# 集群清理
+ansible-playbook 99.clean.yml
 ```
 
 + [可选]对集群所有节点进行操作系统层面的安全加固 `ansible-playbook roles/os-harden/os-harden.yml`，详情请参考[os-harden项目](https://github.com/dev-sec/ansible-os-hardening)
