@@ -69,12 +69,12 @@
     - name: docker国内镜像加速
       template: src=daemon.json.j2 dest=/etc/docker/daemon.json
     
-    - name: flush-iptables
-      shell: "iptables -P INPUT ACCEPT \
-            && iptables -F && iptables -X \
-            && iptables -F -t nat && iptables -X -t nat \
-            && iptables -F -t raw && iptables -X -t raw \
-            && iptables -F -t mangle && iptables -X -t mangle"
+    # - name: flush-iptables
+    #   shell: "iptables -P INPUT ACCEPT \
+    #         && iptables -F && iptables -X \
+    #         && iptables -F -t nat && iptables -X -t nat \
+    #         && iptables -F -t raw && iptables -X -t raw \
+    #         && iptables -F -t mangle && iptables -X -t mangle"
     
     - name: 创建docker的systemd unit文件
       template: src=docker.service.j2 dest=/etc/systemd/system/docker.service
