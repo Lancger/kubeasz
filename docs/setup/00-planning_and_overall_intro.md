@@ -116,7 +116,9 @@ ansible-playbook 06.network.yml
 ansible-playbook 07.cluster-addon.yml
 
 # 一步安装
-#ansible-playbook 90.setup.yml
+# ansible-playbook 90.setup.yml
+
+# 多网卡修改flanel指定网口配置（不然会出现pod跨主机网络异常情况）
 
 # 集群清理
 ansible-playbook 99.clean.yml
