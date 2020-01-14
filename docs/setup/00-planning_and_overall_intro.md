@@ -118,7 +118,13 @@ ansible-playbook 07.cluster-addon.yml
 # 一步安装
 # ansible-playbook 90.setup.yml
 
-# 多网卡修改flanel指定网口配置（不然会出现pod跨主机网络异常情况）
+# 另外需要注意的是如果你的节点有多个网卡的话，需要在 kube-flannel.yml 中使用--iface参数指定集群主机内网网卡的名称，否则可能会出现 dns 无法解析。flanneld 启动参数加上--iface=<iface-name>
+kubectl edit daemonset kube-flannel-ds-amd64 --namespace=kube-system
+
+args:
+- --ip-masq
+- --kube-subnet-mgr
+- --iface=bond0
 
 # 集群清理
 ansible-playbook 99.clean.yml
